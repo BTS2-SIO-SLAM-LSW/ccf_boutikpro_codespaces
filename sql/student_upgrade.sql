@@ -1,0 +1,5 @@
+-- À compléter par l'étudiant
+-- 1. Ajouter telephone à client
+-- 2. Ajouter stock à produit
+-- 3. Ajouter une structure de suivi d'état de commande
+-- 4. Tester les modifications

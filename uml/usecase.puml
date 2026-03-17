@@ -1,0 +1,43 @@
+@startuml
+left to right direction
+
+actor Utilisateur
+actor "Employé commercial" as Commercial
+actor "Gestionnaire catalogue" as Catalogue
+actor "Gestionnaire fournisseurs" as Fournisseurs
+actor Comptable
+
+Utilisateur <|-- Commercial
+Utilisateur <|-- Catalogue
+Utilisateur <|-- Fournisseurs
+Utilisateur <|-- Comptable
+
+rectangle "Application BoutikPro" {
+  usecase "Se connecter" as UC_Login
+  usecase "Gérer les clients" as UC_Clients
+  usecase "Attribuer une carte de fidélité" as UC_Fidelite
+  usecase "Enregistrer une commande" as UC_Commande
+  usecase "Ajouter des produits dans une commande" as UC_AjoutProduitCommande
+  usecase "Consulter les produits" as UC_Produits
+  usecase "Gérer les catégories de produits" as UC_CatProduits
+  usecase "Gérer les fournisseurs" as UC_Fournisseurs
+  usecase "Associer un produit à un fournisseur" as UC_AssocProdFour
+  usecase "Générer une facture" as UC_Facture
+  usecase "Enregistrer une recommandation entre clients" as UC_Recommande
+}
+
+Utilisateur --> UC_Login
+Commercial --> UC_Clients
+Commercial --> UC_Fidelite
+Commercial --> UC_Commande
+Commercial --> UC_AjoutProduitCommande
+Commercial --> UC_Recommande
+Catalogue --> UC_Produits
+Catalogue --> UC_CatProduits
+Fournisseurs --> UC_Fournisseurs
+Fournisseurs --> UC_AssocProdFour
+Comptable --> UC_Facture
+
+UC_Commande .> UC_AjoutProduitCommande : <<include>>
+UC_Commande .> UC_Login : <<include>>
+@enduml

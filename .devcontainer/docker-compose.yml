@@ -1,0 +1,19 @@
+version: '3.8'
+services:
+  app:
+    image: mcr.microsoft.com/devcontainers/python:1-3.11-bullseye
+    volumes:
+      - ..:/workspace/ccf-boutikpro-codespaces:cached
+    command: sleep infinity
+    depends_on:
+      - db
+  db:
+    image: mysql:8.0
+    restart: unless-stopped
+    environment:
+      MYSQL_ROOT_PASSWORD: rootpwd
+      MYSQL_DATABASE: boutikpro_ccf
+      MYSQL_USER: student
+      MYSQL_PASSWORD: studentpwd
+    ports:
+      - "3306:3306"
