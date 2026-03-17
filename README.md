@@ -79,7 +79,7 @@ https://editor.plantuml.com/
   - [docs/guides/SQLALCHEMY_CORE.md](docs/guides/SQLALCHEMY_CORE.md)
   - [docs/guides/SQLALCHEMY_ORM.md](docs/guides/SQLALCHEMY_ORM.md)
 
-### Option E : installation locale
+### Option 2 : installation locale
 
 Cette option permet de travailler hors Codespaces, sur Windows, Linux, macOS ou WSL.
 
