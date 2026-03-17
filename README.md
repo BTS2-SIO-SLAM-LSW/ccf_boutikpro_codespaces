@@ -163,3 +163,28 @@ python -m src.orm.main
 ```
 
 Chaque étudiant choisit **un seul mode d'accès** pour le développement principal du CRUD, mais il peut tester les trois lanceurs pour comparer leur fonctionnement.
+
+
+## Démarrage automatique de MySQL dans GitHub Codespaces
+
+Le template est configuré pour que le service MySQL démarre automatiquement avec le Codespace via Docker Compose.
+Le script `scripts/setup.sh` attend que MySQL soit prêt, crée la base `boutikpro_ccf`, puis charge `sql/01_schema.sql` et `sql/02_seed.sql`.
+
+Après ouverture du Codespace, l'étudiant peut relancer manuellement l'initialisation avec les commandes suivantes :
+
+```bash
+cd /workspace/ccf-boutikpro-codespaces
+sudo apt-get update
+sudo apt-get install -y default-mysql-client
+bash scripts/setup.sh
+bash scripts/check_db.sh
+python -m src.dbapi.main
+```
+
+Si `apt-get update` échoue à cause d'un dépôt externe non signé, le script `bash .devcontainer/install_mysql_client.sh` corrige automatiquement ce cas avant installation du client MySQL.
+
+Pour un lancement en une seule commande :
+
+```bash
+bash scripts/start_dbapi.sh
+```

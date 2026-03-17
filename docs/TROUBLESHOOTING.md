@@ -1,29 +1,39 @@
-# Dépannage rapide
+# Dépannage
 
-## Erreur `ModuleNotFoundError: No module named src`
-Lancer les scripts Python depuis la racine du projet avec :
+## `mysql: command not found`
 
-```bash
-python -m src.dbapi.main
-python -m src.core.main
-python -m src.orm.main
-```
-
-## Erreur `mysql: command not found` dans Codespaces
 Exécuter :
 
 ```bash
-bash scripts/setup.sh
+bash .devcontainer/install_mysql_client.sh
 ```
 
-Le script installe automatiquement le client MySQL s'il manque.
+ou, manuellement :
 
-## Erreur `Table ... doesn't exist`
-Initialiser la base avec :
+```bash
+sudo apt-get update
+sudo apt-get install -y default-mysql-client
+```
+
+## `apt-get update` échoue à cause d'un dépôt non signé
+
+Le script `bash .devcontainer/install_mysql_client.sh` neutralise automatiquement le dépôt Yarn si ce problème survient.
+
+## `Table ... doesn't exist`
+
+Réinitialiser la base :
 
 ```bash
 bash scripts/setup.sh
 bash scripts/check_db.sh
 ```
 
-En local, injecter aussi `sql/01_schema.sql` puis `sql/02_seed.sql`.
+## `ModuleNotFoundError: No module named 'src'`
+
+Toujours lancer les modes Python avec `-m` depuis la racine du projet :
+
+```bash
+python -m src.dbapi.main
+python -m src.core.main
+python -m src.orm.main
+```

@@ -6,7 +6,8 @@ services:
       - ..:/workspace/ccf-boutikpro-codespaces:cached
     command: sleep infinity
     depends_on:
-      - db
+      db:
+        condition: service_healthy
   db:
     image: mysql:8.0
     restart: unless-stopped
@@ -17,3 +18,8 @@ services:
       MYSQL_PASSWORD: studentpwd
     ports:
       - "3306:3306"
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost", "-prootpwd"]
+      interval: 5s
+      timeout: 5s
+      retries: 30

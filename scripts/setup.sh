@@ -2,11 +2,7 @@
 set -e
 cd "$(dirname "$0")/.."
 
-if ! command -v mysql >/dev/null 2>&1; then
-  echo "Installation du client MySQL..."
-  sudo apt-get update
-  sudo apt-get install -y default-mysql-client
-fi
+bash .devcontainer/install_mysql_client.sh
 
 python -m pip install -r requirements.txt
 
