@@ -1,4 +1,4 @@
-# Option 2 - Installation locale
+# Option E - Installation locale
 
 Ce guide décrit l'installation complète sur Windows, Linux, macOS et WSL.
 
